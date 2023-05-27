@@ -1,0 +1,27 @@
+import { createGlobalStyle } from 'styled-components'
+
+export const GlobalStyle = createGlobalStyle`
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    /* :focus{
+        outline: none;
+        box-shadow:0 0 0 2px ${({ theme }) => theme.base_border}
+    } */
+    
+    body{
+        margin: 0 auto;
+        background: ${({ theme }) => theme.base_background};
+        color: ${({ theme }) => theme.base_text};
+        width: 100%;
+        font-family: ${(props) => props.theme.font};
+        height: 100vh;
+        a{
+        text-decoration: none;
+        color: ${({ theme }) => theme.base_text};
+        }
+    }
+`
