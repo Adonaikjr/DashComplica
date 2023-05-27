@@ -2,6 +2,9 @@ import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 export const ContainerSidebar = styled.div`
+  animation-name: top-bottom;
+  animation-duration: 2s;
+  position: relative;
   z-index: 99;
   border: solid 1px;
   border-top-color: #4b0082;

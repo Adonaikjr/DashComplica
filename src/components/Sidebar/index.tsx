@@ -14,10 +14,17 @@ export function Sidebar() {
   return (
     <ContainerSidebar>
       <div>
-        <img
-          src="https://www.adobe.com/br/express/create/logo/media_127a4cd0c28c2753638768caf8967503d38d01e4c.jpeg?width=400&format=jpeg&optimize=medium"
-          alt="batata"
-        />
+        <p>
+          Desenvolvido por:
+          <a
+            href="http://github.com/adonaikjr"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Adonaikjr
+          </a>
+        </p>
+        <img src="https://github.com/adonaikjr.png" alt="batata" />
       </div>
       <nav>
         <ul>

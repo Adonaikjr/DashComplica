@@ -7,6 +7,16 @@ export const ContainerEntrada = styled.main`
   display: flex;
   align-items: center;
   flex-direction: column;
+  gap: 1rem;
+  > section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    > div {
+      flex: 1;
+    }
+  }
   ul {
     width: 100%;
     padding: 0.5rem 1rem;
@@ -32,7 +42,7 @@ export const ContentList = styled.div`
   flex-direction: column;
   padding: 0.5rem 1rem;
   gap: 0.5rem;
-  width: 100%;
+  width: 50%;
   height: 40vh;
   li {
     font-size: 18px;

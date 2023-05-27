@@ -1,19 +1,18 @@
 import styled from 'styled-components'
-import capa from '../../assets/capa.svg'
-
+import background from '../../assets/3d08e03cb40252526fee2036a67f07f1.gif'
 export const ContainerFooter = styled.footer`
-  box-shadow: 0px 1px 10px;
-  background-image: url(${capa});
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
   height: 3rem;
   width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
   margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  /* background-image: url(${background});
+  background-position: center;
+  background-repeat: repeat-x;
+  background-size: cover; */
   a {
     text-decoration: none;
     border: none;

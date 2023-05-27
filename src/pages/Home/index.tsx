@@ -1,4 +1,4 @@
-import { useContext, useEffect } from 'react'
+import { useContext, useState } from 'react'
 import { Input } from '../../components/Input'
 import {
   ContainerHome,
@@ -6,18 +6,24 @@ import {
   ContainerContent,
   ContainerArticle,
   ContainerGrafic,
+  ContainerModal,
 } from './style'
-import { FcSettings } from 'react-icons/all'
+import { IoCloseSharp } from 'react-icons/all'
 import { AuthContext } from '../../hook/auth'
 // @ts-ignore
 import Title from 'react-vanilla-tilt'
 import { Link, useNavigate } from 'react-router-dom'
 import BarChart from '../../components/Grafic'
 import { Button } from '../../components/Button'
+import { Footer } from '../../components/Footer'
+import { api } from '../../service'
 
 export function Home() {
+  const [valueEntrada, setValueEntrada] = useState<Number>(0)
+  const [description, setDescription] = useState('')
   const navigate = useNavigate()
-  const { dataEntrada, dataSaida }: any = useContext(AuthContext)
+  const { dataEntrada, dataSaida, handleNewEntrada, isModal }: any =
+    useContext(AuthContext)
 
   let EntradasTotal: number = 0
   for (let i = 0; i < dataEntrada.length; i++) {
@@ -33,6 +39,22 @@ export function Home() {
     return a - b
   }
 
+  async function handleSubmitEntrada(e: any) {
+    e.preventDefault()
+    try {
+      const UserLocal: any = localStorage.getItem('@user')
+      const user = JSON.parse(UserLocal)
+      await api.post('/entrada', {
+        value: Number(valueEntrada),
+        description,
+        userId: user.id,
+      })
+      alert('Entrada cadastrada com sucesso')
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   function handleLogout() {
     localStorage.removeItem('@token')
     localStorage.removeItem('@user')
@@ -40,19 +62,39 @@ export function Home() {
     navigate('/')
   }
 
-  console.log(EntradasTotal)
-
   return (
     <ContainerHome>
+      {isModal ? (
+        <ContainerModal>
+          <form>
+            <fieldset>
+              <div>
+                <h3>Novo lançamento de Entrada</h3>
+                <IoCloseSharp size={24} onClick={handleNewEntrada} />
+              </div>
+              <label>
+                <Input
+                  type='number' 
+                  placeholder="Valor da Entrada"
+                  onChange={(e) => setValueEntrada(e.target.value)}
+                />
+              </label>
+              <label>
+                <Input
+                  placeholder="Descrição da Entrada"
+                  onChange={(e) => setDescription(e.target.value)}
+                />
+              </label>
+              <Button title="Criar" onClick={handleSubmitEntrada} />
+            </fieldset>
+          </form>
+        </ContainerModal>
+      ) : null}
       <ContainerContent>
         <ContainerSection>
-          <label>
-            search
-            <Input placeholder="Pesquisar" />
-          </label>
-
+          <Button title="+ Entrada" onClick={handleNewEntrada} />
+          <Button title="+ Saida" onClick={handleLogout} />
           <Button title="Sair" onClick={handleLogout} />
-          <FcSettings size={40} />
         </ContainerSection>
         <ContainerArticle>
           <div>
@@ -101,6 +143,7 @@ export function Home() {
             />
           </Title>
         </ContainerGrafic>
+        <Footer />
       </ContainerContent>
     </ContainerHome>
   )

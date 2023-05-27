@@ -81,6 +81,15 @@ export function AuthProvider({ children }: PropsContentContext) {
     }
   }
 
+  const [isModal, setIsModal] = useState(false)
+  function handleNewEntrada() {
+    if (isModal === false) {
+      setIsModal(true)
+    } else {
+      setIsModal(false)
+    }
+  }
+
   useEffect(() => {
     const token = localStorage.getItem('@token')
     const user = localStorage.getItem('@user')
@@ -93,7 +102,7 @@ export function AuthProvider({ children }: PropsContentContext) {
       getSaida()
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [user])
+  }, [user, isModal])
 
   return (
     <AuthContext.Provider
@@ -105,6 +114,8 @@ export function AuthProvider({ children }: PropsContentContext) {
         user,
         dataEntrada,
         dataSaida,
+        handleNewEntrada,
+        isModal,
       }}
     >
       {children}
