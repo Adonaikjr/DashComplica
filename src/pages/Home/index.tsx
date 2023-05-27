@@ -1,6 +1,5 @@
 import { useContext, useEffect, useState } from 'react'
 import { Input } from '../../components/Input'
-import { Sidebar } from '../../components/Sidebar'
 import {
   ContainerHome,
   ContainerSection,
@@ -10,17 +9,12 @@ import {
 } from './style'
 import { FcSettings } from 'react-icons/all'
 import { AuthContext } from '../../hook/auth'
+// @ts-ignore
 import Title from 'react-vanilla-tilt'
 import { Link, useNavigate } from 'react-router-dom'
 import BarChart from '../../components/Grafic'
 import { Button } from '../../components/Button'
-interface PropsData {
-  id: number
-  description: string
-  userId: number
-  value: number
-  createdAt: number
-}
+
 export function Home() {
   const navigate = useNavigate()
   const { dataEntrada, dataSaida }: any = useContext(AuthContext)
