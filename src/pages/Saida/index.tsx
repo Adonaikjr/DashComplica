@@ -1,18 +1,14 @@
-import { useContext, useState } from 'react'
-import { Button } from '../../components/Button'
+import { useContext } from 'react'
 import { ContainerEntrada, ContentList } from './style'
-import { Input } from '../../components/Input'
-import { ContainerContent, ContainerHome, ContainerSection } from '../Home/style'
-import { Sidebar } from '../../components/Sidebar'
+import {
+  ContainerContent,
+  ContainerHome,
+  ContainerSection,
+} from '../Home/style'
 import { AuthContext } from '../../hook/auth'
 import { format } from 'date-fns'
-import Title from 'react-vanilla-tilt'
 
 export function Saida() {
-  const [name, setName] = useState('')
-  const [email, setEmail] = useState('')
-  const [tell, setTell] = useState('')
-  const [messege, setMessege] = useState('')
   const { dataSaida }: any = useContext(AuthContext)
 
   return (

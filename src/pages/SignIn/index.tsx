@@ -1,9 +1,8 @@
-import { useContext, useState } from 'react'
+import { useContext } from 'react'
 import { Input } from '../../components/Input'
-import { api } from '../../service'
 import { ContainerApp } from '../app/styled'
 import { Button } from '../../components/Button'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { AuthContext } from '../../hook/auth'
 
 export function Sign() {

@@ -1,23 +1,18 @@
-import { useContext, useState } from 'react'
-import { Button } from '../../components/Button'
+import { useContext } from 'react'
 import { ContainerEntrada, ContentList } from './style'
-import { Input } from '../../components/Input'
 import {
   ContainerContent,
   ContainerHome,
   ContainerSection,
 } from '../Home/style'
-import { Sidebar } from '../../components/Sidebar'
 import { AuthContext } from '../../hook/auth'
 import { format } from 'date-fns'
+// @ts-ignore
+
 import Title from 'react-vanilla-tilt'
 import BarChart from '../../components/Grafic'
 
 export function Entrada() {
-  const [name, setName] = useState('')
-  const [email, setEmail] = useState('')
-  const [tell, setTell] = useState('')
-  const [messege, setMessege] = useState('')
   const { dataEntrada }: any = useContext(AuthContext)
 
   return (
@@ -39,12 +34,11 @@ export function Entrada() {
                   new Date(item.createdAt),
                   'dd/MM/yyyy HH:mm:ss',
                 )
-                const dataObj = new Date(item.createdAt)
-                const mes = dataObj.getMonth() + 1
+                // const dataObj = new Date(item.createdAt)
+                // const mes = dataObj.getMonth() + 1
 
-                const dataAtual = new Date()
-                const mesAtual = dataAtual.getMonth() + 1
-
+                // const dataAtual = new Date()
+                // const mesAtual = dataAtual.getMonth() + 1
                 return (
                   <ul key={item.id}>
                     <li>{item.description}</li>

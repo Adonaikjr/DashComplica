@@ -1,7 +1,5 @@
-import { useContext, useState } from 'react'
+import { useState } from 'react'
 import { ContainerApp } from './styled'
-import { AiFillLinkedin, AiFillGithub } from 'react-icons/all'
-import Balance from 'react-wrap-balancer'
 import { Input } from '../../components/Input'
 import { Button } from '../../components/Button'
 import { api } from '../../service'
