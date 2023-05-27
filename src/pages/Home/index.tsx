@@ -1,4 +1,4 @@
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 import { Input } from '../../components/Input'
 import {
   ContainerHome,

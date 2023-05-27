@@ -89,9 +89,9 @@ export function AuthProvider({ children }: PropsContentContext) {
       if (data) {
         setUser(true)
       }
+      getEntrada()
+      getSaida()
     }
-    getEntrada()
-    getSaida()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user])
 
