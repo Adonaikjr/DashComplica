@@ -19,7 +19,7 @@ import { Footer } from '../../components/Footer'
 import { api } from '../../service'
 
 export function Home() {
-  const [valueEntrada, setValueEntrada] = useState<Number>(0)
+  const [valueEntrada, setValueEntrada] = useState(0)
   const [description, setDescription] = useState('')
   const navigate = useNavigate()
   const { dataEntrada, dataSaida, handleNewEntrada, isModal }: any =
