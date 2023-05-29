@@ -19,7 +19,7 @@ import { Footer } from '../../components/Footer'
 import { api } from '../../service'
 
 export function Home() {
-  const [valueEntrada, setValueEntrada] = useState(0)
+  const [valueEntrada, setValueEntrada] = useState()
   const [description, setDescription] = useState('')
   const navigate = useNavigate()
   const { dataEntrada, dataSaida, handleNewEntrada, isModal }: any =
@@ -74,9 +74,9 @@ export function Home() {
               </div>
               <label>
                 <Input
-                  type='number' 
+                  type="number"
                   placeholder="Valor da Entrada"
-                  onChange={(e) => setValueEntrada(e.target.value)}
+                  onChange={(e: any) => setValueEntrada(e.target.value)}
                 />
               </label>
               <label>
