@@ -16,9 +16,14 @@ export const ContainerSidebar = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-around;
+  > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
   img {
-    height: 200px;
+    width: 90%;
     border-radius: 18px;
   }
   nav {
@@ -47,6 +52,12 @@ export const ContainerSidebar = styled.div`
         }
       } */
     }
+  }
+  @media (max-width: 900px) {
+    height: 100%;
+    flex-direction: row;
+    width: 100%;
+    padding: 0.5rem 1rem;
   }
 `
 interface PropsLinkNavigate {

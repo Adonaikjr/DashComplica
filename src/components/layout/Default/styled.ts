@@ -1,6 +1,5 @@
 import styled from 'styled-components'
 export const ContainerLayoutDefault = styled.div`
-  height: 100vh;
   display: flex;
   transition: 1s;
   #hero {

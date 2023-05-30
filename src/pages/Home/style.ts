@@ -7,6 +7,7 @@ export const ContainerHome = styled.main`
   display: flex;
   width: 100%;
   transition: 2s;
+  height: 100%;
   ::-webkit-scrollbar {
     width: 6px;
     transition: 1s;
@@ -29,11 +30,9 @@ export const ContainerHome = styled.main`
 `
 
 export const ContainerSection = styled.section`
-  width: 100%;
-  height: 5rem;
-
   border: solid 1px;
   display: flex;
+  z-index: 99;
   align-items: center;
   justify-content: space-between;
   padding: 0.5rem 1rem;
@@ -49,18 +48,24 @@ export const ContainerSection = styled.section`
       background-color: transparent;
     }
   }
-    transition: 1s;
+  transition: 1s;
+  @media (max-width: 900px) {
+    flex-wrap: wrap;
+  }
 `
-export const ContainerContent = styled.main`
-  flex: 1;
+export const ContainerContent = styled.div`
   display: flex;
   flex-direction: column;
-  z-index: 99;
   transition: 1s;
+  width: 100%;
 `
 export const ContainerArticle = styled.article`
   width: 100%;
+  z-index: 99;
   display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
   gap: 1rem;
   padding: 0.5rem 1rem;
   > div {
@@ -86,7 +91,8 @@ export const ContainerArticle = styled.article`
     list-style: none;
   }
   section {
-    width: 50%;
+    width: 40%;
+    height: 100%;
     div {
       display: flex;
       align-items: center;
@@ -106,8 +112,16 @@ export const ContainerGrafic = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-around;
+  flex-wrap: wrap;
   > div {
     width: 31rem;
+  }
+  @media (max-width: 900px) {
+    align-items: center;
+    justify-content: center;
+    > div {
+      width: 100%;
+    }
   }
 `
 export const ContainerModal = styled.div`

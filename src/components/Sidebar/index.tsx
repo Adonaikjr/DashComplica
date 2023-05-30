@@ -1,30 +1,35 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { ContainerSidebar, LinkNavigate } from './styled'
-import { useNavigate } from 'react-router-dom'
+import { api } from '../../service'
 
 export function Sidebar() {
+  const [data, setData] = useState([])
   const [selectedItem, setSelectedItem] = useState('')
-  const navigate = useNavigate()
 
   function handleClick(item: string) {
     console.log(item)
     setSelectedItem(item)
   }
 
+  useEffect(() => {
+    async function handleImage() {
+      try {
+        const response = await api.get(`/users/avatar`)
+        const result = response.data.map((item: any) => {
+          return item.Image
+        })
+        return setData(result[0])
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    handleImage()
+  }, [])
+
   return (
     <ContainerSidebar>
       <div>
-        <p>
-          Desenvolvido por:
-          <a
-            href="http://github.com/adonaikjr"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Adonaikjr
-          </a>
-        </p>
-        <img src="https://github.com/adonaikjr.png" alt="batata" />
+        <img src={`http://localhost:3333/files/${data}`} alt="batata" />
       </div>
       <nav>
         <ul>
