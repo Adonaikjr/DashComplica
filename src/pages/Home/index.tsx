@@ -191,6 +191,12 @@ export function Home() {
               abr={sumByMonth[4]}
               mai={sumByMonth[5]}
               jun={sumByMonth[6]}
+              jul={sumByMonth[7]}
+              ago={sumByMonth[8]}
+              set={sumByMonth[9]}
+              out={sumByMonth[10]}
+              nov={sumByMonth[11]}
+              dez={sumByMonth[12]}
             />
           </Title>
           <Title style={{}}>
@@ -203,6 +209,12 @@ export function Home() {
               abr={saidaByMonth[4]}
               mai={saidaByMonth[5]}
               jun={saidaByMonth[6]}
+              jul={saidaByMonth[7]}
+              ago={saidaByMonth[8]}
+              set={saidaByMonth[9]}
+              out={saidaByMonth[10]}
+              nov={saidaByMonth[11]}
+              dez={saidaByMonth[12]}
             />
           </Title>
         </ContainerGrafic>

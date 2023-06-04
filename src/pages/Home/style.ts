@@ -8,6 +8,7 @@ export const ContainerHome = styled.main`
   width: 100%;
   transition: 2s;
   height: 100%;
+  z-index: 99;
   ::-webkit-scrollbar {
     width: 6px;
     transition: 1s;
@@ -30,7 +31,7 @@ export const ContainerHome = styled.main`
 `
 
 export const ContainerSection = styled.section`
-  border: solid 1px;
+  // border: solid 1px;
   display: flex;
   z-index: 99;
   align-items: center;
@@ -120,6 +121,7 @@ export const ContainerGrafic = styled.div`
   @media (max-width: 900px) {
     align-items: center;
     justify-content: center;
+    align-items: center;
     > div {
       border: solid transparent;
       width: 90%;
@@ -129,7 +131,7 @@ export const ContainerGrafic = styled.div`
 export const ContainerModal = styled.div`
   animation-name: top-bottom;
   animation-duration: 2s;
-  position: relative;
+  position: absolute;
   width: 100%;
   @keyframes top-bottom {
     0% {
@@ -153,14 +155,13 @@ export const ContainerModal = styled.div`
       top: 0px;
     }
   }
-  padding: 1rem;
-  z-index: 99;
+  z-index: 100;
   fieldset {
     border: none;
     box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
     background-color: #000;
     border-radius: 10px;
-    padding: 0.5rem 1rem;
+    padding: 2rem 1rem;
     display: flex;
     flex-direction: column;
     gap: 1rem;

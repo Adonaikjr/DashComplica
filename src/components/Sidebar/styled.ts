@@ -26,6 +26,9 @@ export const ContainerSidebar = styled.div`
     width: 90%;
     border-radius: 18px;
   }
+  section {
+    display: none;
+  }
   nav {
     width: 100%;
     ul {
@@ -56,8 +59,20 @@ export const ContainerSidebar = styled.div`
   @media (max-width: 900px) {
     height: 100%;
     flex-direction: row;
+    justify-content: space-between;
     width: 100%;
     padding: 0.5rem 1rem;
+    section {
+      display: block;
+    }
+    img {
+      width: 5.5rem;
+      border-radius: 5px;
+    }
+    nav {
+      display: none;
+    }
+    border: none;
   }
 `
 interface PropsLinkNavigate {
@@ -84,4 +99,32 @@ export const LinkNavigate = styled(Link)<PropsLinkNavigate>`
   text-align: center;
   color: ${(props) =>
     props.active ? props.theme.base_background : props.theme.white};
+`
+export const ContainerMobile = styled.div`
+  width: 100%;
+  background-color: ${(props) => props.theme.base_background};
+
+  nav {
+    display: block;
+    ul {
+      a {
+        font-size: 1rem;
+        width: 100%;
+        border: none;
+        position: relative;
+        animation: sidebar;
+        animation-duration: 0.5s;
+        transition: 2s;
+        @keyframes sidebar {
+          from {
+            left: -2000px;
+          }
+          to {
+            transition: 2s;
+            left: 0px;
+          }
+        }
+      }
+    }
+  }
 `
