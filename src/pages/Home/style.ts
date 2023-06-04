@@ -121,7 +121,8 @@ export const ContainerGrafic = styled.div`
     align-items: center;
     justify-content: center;
     > div {
-      width: 100%;
+      border: solid transparent;
+      width: 90%;
     }
   }
 `

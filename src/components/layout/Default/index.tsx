@@ -6,12 +6,12 @@ import { AuthContext } from '../../../hook/auth'
 import { useContext } from 'react'
 
 export function LayoutDefault() {
-  const { user, isModal }: any = useContext(AuthContext)
+  const { user, isModal, isModalSaida }: any = useContext(AuthContext)
 
   return (
     <>
       <ContainerLayoutDefault>
-        {user && !isModal && <Sidebar />}
+        {user && !isModal && !isModalSaida && <Sidebar />}
         <Outlet />
         <HeroPattern />
       </ContainerLayoutDefault>

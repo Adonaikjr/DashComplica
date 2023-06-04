@@ -8,12 +8,13 @@ import { BrowserRouter } from 'react-router-dom'
 // import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { AuthProvider } from './hook/auth'
+import { ToastContainer } from 'react-toastify'
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <ThemeProvider theme={defaultTheme}>
     <BrowserRouter>
       <AuthProvider>
-        {/* <ToastContainer
+        <ToastContainer
           position="top-center"
           autoClose={2000}
           hideProgressBar={false}
@@ -24,7 +25,7 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
           draggable
           pauseOnHover
           theme="dark"
-        /> */}
+        />
         <GlobalStyle />
         <AppRoutes />
       </AuthProvider>

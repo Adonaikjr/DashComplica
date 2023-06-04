@@ -67,7 +67,14 @@ export function AuthProvider({ children }: PropsContentContext) {
   }
   // ==> LOGICA SOBRE SAIDAS <==
   const [dataSaida, setDataSaida] = useState([])
-
+  const [isModalSaida, setIsModalSaida] = useState<Boolean>(false)
+  function handleNewSaida() {
+    if (isModalSaida === false) {
+      setIsModalSaida(true)
+    } else {
+      setIsModalSaida(false)
+    }
+  }
   async function getSaida() {
     try {
       const response = await api.get('/desp')
@@ -158,7 +165,7 @@ export function AuthProvider({ children }: PropsContentContext) {
       getSaida()
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [user, isModal])
+  }, [user, isModal, isModalSaida])
 
   return (
     <AuthContext.Provider
@@ -174,6 +181,8 @@ export function AuthProvider({ children }: PropsContentContext) {
         isModal,
         sumByMonth,
         saidaByMonth,
+        handleNewSaida,
+        isModalSaida,
       }}
     >
       {children}
