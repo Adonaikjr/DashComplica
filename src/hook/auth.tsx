@@ -20,7 +20,7 @@ export function AuthProvider({ children }: PropsContentContext) {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [data, setData] = useState([])
-  const [user, setUser] = useState(false)
+  const [user, setUser] = useState<Boolean>(false)
 
   const handleBackNaviigate = () => {
     navigate(-1)
@@ -41,7 +41,7 @@ export function AuthProvider({ children }: PropsContentContext) {
       localStorage.setItem('@token', result.token)
       localStorage.setItem('@user', JSON.stringify(result.user))
       setData(result)
-      console.log(result)
+      // console.log(result)
       setUser(true)
       return navigate('/')
     } catch (error) {
@@ -59,12 +59,13 @@ export function AuthProvider({ children }: PropsContentContext) {
       const result = response.data?.filter((item: any) => {
         return item.userId === user.id
       })
-      console.log(result)
+      // console.log(result)
       return setDataEntrada(result.reverse())
     } catch (error) {
       console.log(error)
     }
   }
+  // ==> LOGICA SOBRE SAIDAS <==
   const [dataSaida, setDataSaida] = useState([])
 
   async function getSaida() {
@@ -74,14 +75,44 @@ export function AuthProvider({ children }: PropsContentContext) {
       const result = response.data?.filter((item: any) => {
         return item.userId === user.id
       })
-      console.log(result)
+      // console.log(result)
       return setDataSaida(result.reverse())
     } catch (error) {
       console.log(error)
     }
   }
 
-  const [isModal, setIsModal] = useState(false)
+  console.log(dataSaida)
+  // 1. Extrair o mês de cada objeto da lista
+  const monthsSaida = dataSaida?.map(
+    (obj: any) => new Date(obj.createdAt).getMonth() + 1,
+  )
+
+  // 2. Agrupar os objetos por mês
+  const groupedByMonthSaida = monthsSaida.reduce(
+    (acc: any, month: any, index: any) => {
+      if (!acc[month]) {
+        acc[month] = []
+      }
+      acc[month].push(dataSaida[index])
+      return acc
+    },
+    {},
+  )
+
+  // 3. Calcular a soma dos valores para cada mês
+  const saidaByMonth: Record<string, number> = Object.keys(
+    groupedByMonthSaida,
+  ).reduce((acc: any, month) => {
+    const values = groupedByMonthSaida[month].map((obj: any) => obj.valueDesp)
+    const total = values.reduce((sum: any, value: any) => sum + value, 0)
+    acc[month] = total
+    return acc
+  }, {})
+  console.log(saidaByMonth)
+
+  // ==> LOGICAS SOBRE ENTRADAS <==
+  const [isModal, setIsModal] = useState<Boolean>(false)
   function handleNewEntrada() {
     if (isModal === false) {
       setIsModal(true)
@@ -89,6 +120,31 @@ export function AuthProvider({ children }: PropsContentContext) {
       setIsModal(false)
     }
   }
+
+  // 1. Extrair o mês de cada objeto da lista
+  const months = dataEntrada?.map(
+    (obj: any) => new Date(obj.createdAt).getMonth() + 1,
+  )
+
+  // 2. Agrupar os objetos por mês
+  const groupedByMonth = months.reduce((acc: any, month: any, index: any) => {
+    if (!acc[month]) {
+      acc[month] = []
+    }
+    acc[month].push(dataEntrada[index])
+    return acc
+  }, {})
+
+  // 3. Calcular a soma dos valores para cada mês
+  const sumByMonth: Record<string, number> = Object.keys(groupedByMonth).reduce(
+    (acc: any, month) => {
+      const values = groupedByMonth[month].map((obj: any) => obj.value)
+      const total = values.reduce((sum: any, value: any) => sum + value, 0)
+      acc[month] = total
+      return acc
+    },
+    {},
+  )
 
   useEffect(() => {
     const token = localStorage.getItem('@token')
@@ -116,6 +172,8 @@ export function AuthProvider({ children }: PropsContentContext) {
         dataSaida,
         handleNewEntrada,
         isModal,
+        sumByMonth,
+        saidaByMonth,
       }}
     >
       {children}

@@ -22,8 +22,14 @@ export function Home() {
   const [valueEntrada, setValueEntrada] = useState()
   const [description, setDescription] = useState('')
   const navigate = useNavigate()
-  const { dataEntrada, dataSaida, handleNewEntrada, isModal }: any =
-    useContext(AuthContext)
+  const {
+    dataEntrada,
+    dataSaida,
+    handleNewEntrada,
+    isModal,
+    sumByMonth,
+    saidaByMonth,
+  }: any = useContext(AuthContext)
 
   let EntradasTotal: number = 0
   for (let i = 0; i < dataEntrada.length; i++) {
@@ -50,6 +56,8 @@ export function Home() {
         userId: user.id,
       })
       alert('Entrada cadastrada com sucesso')
+      handleNewEntrada()
+      navigate('/entrada')
     } catch (error) {
       console.log(error)
     }
@@ -122,24 +130,24 @@ export function Home() {
             <BarChart
               title="Entradas"
               backgroundColor="#00FF7F"
-              abr={23}
-              fev={34}
-              jan={4}
-              jun={55}
-              mai={34}
-              mar={77}
+              jan={sumByMonth[1]}
+              fev={sumByMonth[2]}
+              mar={sumByMonth[3]}
+              abr={sumByMonth[4]}
+              mai={sumByMonth[5]}
+              jun={sumByMonth[6]}
             />
           </Title>
           <Title style={{}}>
             <BarChart
               title="Saídas"
               backgroundColor="#FF6347	"
-              abr={23}
-              fev={34}
-              jan={4}
-              jun={55}
-              mai={34}
-              mar={77}
+              jan={saidaByMonth[1]}
+              fev={saidaByMonth[2]}
+              mar={saidaByMonth[3]}
+              abr={saidaByMonth[4]}
+              mai={saidaByMonth[5]}
+              jun={saidaByMonth[6]}
             />
           </Title>
         </ContainerGrafic>

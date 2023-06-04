@@ -63,7 +63,7 @@ export const ContainerArticle = styled.article`
   width: 100%;
   z-index: 99;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
   gap: 1rem;
@@ -109,6 +109,7 @@ export const ContainerArticle = styled.article`
   }
 `
 export const ContainerGrafic = styled.div`
+  z-index: 99;
   width: 100%;
   display: flex;
   justify-content: space-around;

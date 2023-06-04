@@ -7,7 +7,7 @@ export function Sidebar() {
   const [selectedItem, setSelectedItem] = useState('')
 
   function handleClick(item: string) {
-    console.log(item)
+    // console.log(item)
     setSelectedItem(item)
   }
 
@@ -29,7 +29,10 @@ export function Sidebar() {
   return (
     <ContainerSidebar>
       <div>
-        <img src={`http://localhost:3333/files/${data}`} alt="batata" />
+        <img
+          src={`https://dashcomplicaapi.onrender.com/files/${data}`}
+          alt="batata"
+        />
       </div>
       <nav>
         <ul>

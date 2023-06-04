@@ -11,7 +11,7 @@ import BarChart from '../../components/Grafic'
 import { Button } from '../../components/Button'
 
 export function Entrada() {
-  const { dataEntrada }: any = useContext(AuthContext)
+  const { dataEntrada, sumByMonth }: any = useContext(AuthContext)
 
   return (
     <ContainerHome>
@@ -36,8 +36,6 @@ export function Entrada() {
                     new Date(item.createdAt),
                     'dd/MM/yyyy HH:mm:ss',
                   )
-                  // const dataObj = new Date(item.createdAt)
-                  // const mes = dataObj.getMonth() + 1
 
                   // const dataAtual = new Date()
                   // const mesAtual = dataAtual.getMonth() + 1
@@ -54,15 +52,15 @@ export function Entrada() {
               <BarChart
                 title="Entradas"
                 backgroundColor="#00FF7F"
-                abr={23}
-                fev={34}
-                jan={4}
-                jun={55}
-                mai={34}
-                mar={77}
+                jan={sumByMonth[1]}
+                fev={sumByMonth[2]}
+                mar={sumByMonth[3]}
+                abr={sumByMonth[4]}
+                mai={sumByMonth[5]}
+                jun={sumByMonth[6]}
               />
             </div>
-         </section>
+          </section>
         </ContainerEntrada>
       </ContainerContent>
     </ContainerHome>

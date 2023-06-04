@@ -61,7 +61,7 @@ export const ContainerSidebar = styled.div`
   }
 `
 interface PropsLinkNavigate {
-  active?: boolean
+  active?: any
 }
 
 export const LinkNavigate = styled(Link)<PropsLinkNavigate>`
