@@ -16,11 +16,9 @@ export function Sidebar() {
   useEffect(() => {
     async function handleImage() {
       try {
-        const UserLocal: any = localStorage.getItem('@user')
-        const user = JSON.parse(UserLocal)
         const response = await api.get(`/users/avatar`)
         const newData = response.data?.filter((item: any) => {
-          return item.userId === user.id
+          return item.userId === 1
         })
         return setData(newData[0].Image)
       } catch (error) {
