@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 export const api = axios.create({
-  baseURL: 'https://dashcomplicaapi.onrender.com',
+  baseURL: 'http://191.252.113.234:3333',
 })
 
 // export const api = axios.create({
