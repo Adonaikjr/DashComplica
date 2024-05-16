@@ -1,4 +1,6 @@
 # DashComplica
+
+//api desativada
  login: admin@admin
  pass: 123
 aguarde alguns minutos até que a solicitação seja feita
